@@ -8,7 +8,7 @@ To use this template, either create a new ionic project using the ionic node.js 
 
 ### With the Ionic CLI:
 
-Clone a repository with ' git clone '
+Clone a repository with `git clone `
 
 ```bash
 $ git clone https://github.com/vishal-addweb/firebasedemo.git
@@ -30,6 +30,6 @@ $ ionic cordova run ios
 For run the project
 
 ```bash
- $ ionic serve 
+ $ ionic serve
 ```
 Substitute ios for android if not on a Mac.
