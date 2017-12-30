@@ -43,15 +43,6 @@ export class LoginPage {
   }
 
 /*------------------
-
-ionic_3 & Firebase_auth_v5.0
-
-Firebase : email - johnnyharpertesting2@gmail.com
-		   App name - FirebaseAuth
-
-facebook : email - johnnyharpertesting@gmail.com
-		   App name - fire­b­a­s­e­a­u­t­h­a­n­t­i­c­a­tiongo
-
 --------------------*/
 
 // For User Login
