@@ -8,19 +8,28 @@ To use this template, either create a new ionic project using the ionic node.js 
 
 ### With the Ionic CLI:
 
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+Clone a repository with ' git clone '
 
 ```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myBlank blank
+$ git clone https://github.com/vishal-addweb/firebasedemo.git
+$ npm install
 ```
+Then install angularfire2 and firebase using Below Command
 
+```bash
+$ npm install firebase@4.6.0 --save
+$ npm install angularfire2@5.0.0-rc.3 --save
+
+```
 Then, to run it, cd into `myBlank` and run:
 
 ```bash
 $ ionic cordova platform add ios
 $ ionic cordova run ios
 ```
+For run the project
 
+```bash
+ $ ionic serve 
+```
 Substitute ios for android if not on a Mac.
-
