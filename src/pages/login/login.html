@@ -43,10 +43,13 @@
     <button ion-button full color="dark" (click)="moveToRegister()">
     	Register
     </button>
+
+
+
 <div class="socialLogin">
-		<button ion-fab class="google" (click)="socialLogin('google')"><ion-icon name="logo-google"></ion-icon></button>
-		<button ion-fab class="facebook" (click)="socialLogin('facebook')"><ion-icon name="logo-facebook"></ion-icon></button>
-		<button ion-fab class="twitter" (click)="socialLogin('twitter')"><ion-icon name="logo-twitter"></ion-icon></button>
-		<button ion-fab class="github" (click)="socialLogin('github')"><ion-icon name="logo-github"></ion-icon></button>
+		<button ion-button class="google" (click)="socialLogin('google')"><ion-icon name="logo-google"></ion-icon>&nbsp;Google</button>
+		<button ion-button class="facebook" (click)="socialLogin('facebook')"><ion-icon name="logo-facebook"></ion-icon>&nbsp;Facebook</button>
+		<!-- <button ion-fab class="twitter" (click)="socialLogin('twitter')"><ion-icon name="logo-twitter"></ion-icon></button>
+		<button ion-fab class="github" (click)="socialLogin('github')"><ion-icon name="logo-github"></ion-icon></button> -->
 </div>
 </ion-content>

@@ -7,7 +7,6 @@ import { File } from '@ionic-native/file';
 import { FilePath } from '@ionic-native/file-path';
 
 import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
 
 import { LoginPage } from '../login/login';
 import { LoadingProvider } from '../../providers/loading/loading';
@@ -56,6 +55,7 @@ export class RegisterPage {
       this.afAuth.auth.createUserWithEmailAndPassword(regData.mail,regData.pass)
       .then(result => {
         this.loadingProvider.stopLoading();
+        this.presentToast('Ragister Successfully..!')
           this.navCtrl.setRoot(LoginPage);
       }).catch(err => {
         this.loadingProvider.stopLoading();

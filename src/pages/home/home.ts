@@ -4,7 +4,6 @@ import { NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 
 import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
 import { LoadingProvider } from '../../providers/loading/loading';
 
 @Component({

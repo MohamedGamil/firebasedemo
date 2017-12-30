@@ -6,9 +6,12 @@ import { HomePage } from '../home/home';
 import { RegisterPage } from '../register/register';
 
 import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
+import firebase from 'firebase';
 
 import { LoadingProvider } from '../../providers/loading/loading';
+
+import { Facebook } from '@ionic-native/facebook'
+
 
 
 @IonicPage()
@@ -24,8 +27,8 @@ export class LoginPage {
 	email: AbstractControl;
 	password: AbstractControl;
 
-  constructor(public toastCtrl: ToastController, public fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public afAuth: AngularFireAuth,public loadingProvider: LoadingProvider) {
-
+  constructor(public toastCtrl: ToastController, public fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public afAuth: AngularFireAuth,public loadingProvider: LoadingProvider,public facebook: Facebook) {
+    this.loadingProvider.stopLoading();
   	this.authForm = this.fb.group({
       'email' : [null, Validators.compose([Validators.required])],
       'password': [null, Validators.compose([Validators.required])],
@@ -47,7 +50,7 @@ Firebase : email - johnnyharpertesting2@gmail.com
 		   App name - FirebaseAuth
 
 facebook : email - johnnyharpertesting@gmail.com
-		   App name - FirebaseAuth
+		   App name - fire­b­a­s­e­a­u­t­h­a­n­t­i­c­a­tiongo
 
 --------------------*/
 
@@ -71,33 +74,61 @@ facebook : email - johnnyharpertesting@gmail.com
 // For Social Login
 
   socialLogin(isLogin){
-
-  	console.log(isLogin);
-
   	if (isLogin == "facebook"){
-  		this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
-      	.then(res => {
-      		 this.moveToHome(res.user);
-      	})
-      	.catch(err => console.log('err',err));
+      this.loadingProvider.startLoading();
+
+      let provider = new firebase.auth.FacebookAuthProvider();
+        firebase.auth().signInWithRedirect(provider).then(() => {
+          this.loadingProvider.startLoading();
+            firebase.auth().getRedirectResult().then((result)=>{
+              console.log('result',result);
+              this.moveToHome(result.user);
+              this.loadingProvider.stopLoading();
+            }).catch(function(error){
+              this.loadingProvider.stopLoading();
+              alert(error.message);
+              console.log('error',error);
+            })
+            this.loadingProvider.stopLoading();
+        }).catch(function(error){
+          this.loadingProvider.stopLoading();
+          alert(error.message);
+          console.log('error',error);
+        })
+        this.loadingProvider.stopLoading();
   	}else if(isLogin == "google"){
-  		this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-      	.then(res => {
-      		 this.moveToHome(res.user);
-      	})
-      	.catch(err => console.log('err',err));
+      this.loadingProvider.startLoading();
+      let provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithRedirect(provider).then(() => {
+          this.loadingProvider.startLoading();
+            firebase.auth().getRedirectResult().then((result)=>{
+              console.log('result',result);
+              this.loadingProvider.stopLoading();
+              this.moveToHome(result.user);
+            }).catch(function(error){
+              this.loadingProvider.stopLoading();
+              alert(error.message);
+              console.log('error',error);
+            })
+            this.loadingProvider.stopLoading();
+        }).catch(function(error){
+          this.loadingProvider.stopLoading();
+          alert(error.message);
+          console.log('error',error);
+        })
+        this.loadingProvider.stopLoading();
   	}else if(isLogin == "twitter"){
-  		this.afAuth.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider())
-      	.then(res => {
-      		 this.moveToHome(res);
-      	})
-      	.catch(err => console.log('err',err));
+  		// this.afAuth.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider())
+      // 	.then(res => {
+      // 		 this.moveToHome(res);
+      // 	})
+      // 	.catch(err => console.log('err',err));
   	}else if(isLogin == "github"){
-  		this.afAuth.auth.signInWithPopup(new firebase.auth.GithubAuthProvider())
-      	.then(res => {
-      		 this.moveToHome(res);
-      	})
-      	.catch(err => console.log('err',err));
+  		// this.afAuth.auth.signInWithPopup(new firebase.auth.GithubAuthProvider())
+      // 	.then(res => {
+      // 		 this.moveToHome(res);
+      // 	})
+      // 	.catch(err => console.log('err',err));
   	}
 
   }
@@ -121,6 +152,13 @@ facebook : email - johnnyharpertesting@gmail.com
   });
 
   toast.present();
+}
+presentAlert(err) {
+
+}
+
+facebookLogin() {
+
 }
 
 }
