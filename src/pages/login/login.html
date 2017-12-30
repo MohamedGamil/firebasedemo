@@ -4,7 +4,7 @@
   <ion-navbar color="dark">
     <ion-title>
     <ion-icon name="md-contact"></ion-icon>
-    &nbsp;Login</ion-title>
+    &nbsp;Sign In</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,7 +15,7 @@
 <form [formGroup]="authForm" (ngSubmit)="userLogin(loginData)">
 	<ion-list>
 		<ion-item>
-      	<ion-label floating>Email</ion-label>
+      	<ion-label floating>Email *</ion-label>
         <ion-input [(ngModel)]="loginData.email" [formControl]="email" id="email" type="text" required></ion-input>
       </ion-item>
 
@@ -24,7 +24,7 @@
        </div>
 
       <ion-item>
-      	<ion-label floating>Password</ion-label>
+      	<ion-label floating>Password *</ion-label>
         <ion-input [(ngModel)]="loginData.password" [formControl]="password" id="password" type="password" required></ion-input>
       </ion-item>
 
@@ -36,13 +36,11 @@
 
         <br>
       <button type="submit" ion-button full color="dark" [disabled]="!authForm.valid">
-        LogIN
+        Sign In
       </button>
     </form>
     <br>
-    <button ion-button full color="dark" (click)="moveToRegister()">
-    	Register
-    </button>
+    <label style="text-align: center;">Don't have an Account? <a  (click)="moveToRegister()">Create an Account</a></label>
 
 
 

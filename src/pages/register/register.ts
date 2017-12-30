@@ -24,25 +24,25 @@ export class RegisterPage {
   lastImage: string = null;
   cropImagePath:any;
 
-	regData = { name: '', mail: '', pass: '', mobile: '' };
+	regData = { name: '', mail: '', pass: '', cnfpass: '' };
 	authForm : FormGroup;
 	username: AbstractControl;
 	email: AbstractControl;
 	password: AbstractControl;
-  mobile: AbstractControl;
+  cnfpass: AbstractControl;
 
   constructor(public platform: Platform, public camera: Camera, public file: File, public filePath: FilePath, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController, public afAuth: AngularFireAuth, public fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams,public loadingProvider: LoadingProvider){
   	this.authForm = this.fb.group({
           'username' : [null, Validators.compose([Validators.required])],
           'email': [null, Validators.compose([Validators.required])],
           'password': [null, Validators.compose([Validators.required])],
-          'mobile': [null, Validators.compose([Validators.required])]
+          'cnfpass': [null, Validators.compose([Validators.required])]
       });
 
         this.username = this.authForm.controls['username'];
         this.email = this.authForm.controls['email'];
         this.password = this.authForm.controls['password'];
-        this.mobile = this.authForm.controls['mobile'];
+        this.cnfpass = this.authForm.controls['cnfpass'];
   }
 
   ionViewDidLoad() {
@@ -50,18 +50,21 @@ export class RegisterPage {
   }
 
   doRegister(regData){
-  	console.log('regData',regData);
-    this.loadingProvider.startLoading();
-      this.afAuth.auth.createUserWithEmailAndPassword(regData.mail,regData.pass)
-      .then(result => {
-        this.loadingProvider.stopLoading();
-        this.presentToast('Ragister Successfully..!')
-          this.navCtrl.setRoot(LoginPage);
-      }).catch(err => {
-        this.loadingProvider.stopLoading();
-          console.log('err',err);
-          this.presentToast(err);
+  	if(regData.pass == regData.cnfpass){
+      this.loadingProvider.startLoading();
+        this.afAuth.auth.createUserWithEmailAndPassword(regData.mail,regData.pass)
+        .then(result => {
+          this.loadingProvider.stopLoading();
+          this.presentToast('Ragister Successfully..!')
+            this.navCtrl.setRoot(LoginPage);
+        }).catch(err => {
+          this.loadingProvider.stopLoading();
+            console.log('err',err);
+            this.presentToast(err);
       });
+    }else {
+        this.presentToast('Both password are not matched!')
+    }
   }
 
    public presentActionSheet() {

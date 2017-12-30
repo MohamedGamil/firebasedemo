@@ -28,7 +28,6 @@ export class LoginPage {
 	password: AbstractControl;
 
   constructor(public toastCtrl: ToastController, public fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public afAuth: AngularFireAuth,public loadingProvider: LoadingProvider,public facebook: Facebook) {
-    this.loadingProvider.stopLoading();
   	this.authForm = this.fb.group({
       'email' : [null, Validators.compose([Validators.required])],
       'password': [null, Validators.compose([Validators.required])],
