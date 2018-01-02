@@ -1,12 +1,22 @@
-<ion-header>
+<!-- <ion-header class="header-main">
   <ion-navbar color="dark">
     <ion-title>
     {{userData.email}}
     </ion-title>
-    <ion-buttons end>
+    <ion-buttons>
 	    <button ion-button clear (click)="logout()">
 	      	<ion-icon name="md-exit"></ion-icon>
 	    </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header> -->
+
+<ion-header class="header-main">
+  <ion-navbar >
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon ios="ios-exit" md="md-exit"></ion-icon>
+      </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>

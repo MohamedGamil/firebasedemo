@@ -1,4 +1,4 @@
-
+<!-- 
 <ion-header>
 
   <ion-navbar color="dark">
@@ -7,47 +7,54 @@
     &nbsp;Sign In</ion-title>
   </ion-navbar>
 
-</ion-header>
+</ion-header> -->
 
 
-<ion-content padding>
+<ion-content class="bg-img">
 
-<form [formGroup]="authForm" (ngSubmit)="userLogin(loginData)">
-	<ion-list>
-		<ion-item>
-      	<ion-label floating>Email *</ion-label>
-        <ion-input [(ngModel)]="loginData.email" [formControl]="email" id="email" type="text" required></ion-input>
-      </ion-item>
-
-       <div *ngIf="email.errors && email.touched">
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;Email is required.</p>
-       </div>
-
-      <ion-item>
-      	<ion-label floating>Password *</ion-label>
-        <ion-input [(ngModel)]="loginData.password" [formControl]="password" id="password" type="password" required></ion-input>
-      </ion-item>
-
+  <div padding text-center class="container-logo" margin-bottom >
+    <img src="/assets/imgs/logo.png">
+  </div>
+  <div padding class="container-bottom">
+    <form [formGroup]="authForm" (ngSubmit)="userLogin(loginData)">
+      <div class="errormsg">
+        <div *ngIf="email.errors && email.touched">
+            <p>Email is required.</p>
+        </div>
         <div *ngIf="password.errors && password.touched">
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;Password is required.</p>
+            <p>Password is required.</p>
+        </div>
+      </div>
+
+      <ion-list>
+        <ion-item padding-right>
+          <ion-label>
+            <ion-icon ios="ios-person" md="md-person"></ion-icon>
+          </ion-label>
+          <ion-input [(ngModel)]="loginData.email" [formControl]="email" id="email" type="text" required placeholder="Email *"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <ion-icon ios="ios-unlock" md="md-unlock"></ion-icon>
+          </ion-label>
+          <ion-input [(ngModel)]="loginData.password" [formControl]="password" id="password" type="password" required placeholder="Password *"></ion-input>
+          </ion-item>
+        </ion-list>
+        <button type="submit" ion-button full color="dark" [disabled]="!authForm.valid">
+          Sign In
+        </button>
+    </form>
+        <div padding text-center class="form-bottom-text">
+          <label>Don't have an Account? <a href="javascript:void(0);" (click)="moveToRegister()">Create an Account</a></label>
         </div>
 
-	</ion-list>
-
-        <br>
-      <button type="submit" ion-button full color="dark" [disabled]="!authForm.valid">
-        Sign In
-      </button>
-    </form>
-    <br>
-    <label style="text-align: center;">Don't have an Account? <a  (click)="moveToRegister()">Create an Account</a></label>
+        <div text-center class="socialLogin">
+            <button ion-button class="google" (click)="socialLogin('google')"><ion-icon name="logo-google"></ion-icon>&nbsp;Google</button>
+            <button ion-button class="facebook" (click)="socialLogin('facebook')"><ion-icon name="logo-facebook"></ion-icon>&nbsp;Facebook</button>
+            <!-- <button ion-fab class="twitter" (click)="socialLogin('twitter')"><ion-icon name="logo-twitter"></ion-icon></button>
+            <button ion-fab class="github" (click)="socialLogin('github')"><ion-icon name="logo-github"></ion-icon></button> -->
+        </div>
+  </div>
 
 
-
-<div class="socialLogin">
-		<button ion-button class="google" (click)="socialLogin('google')"><ion-icon name="logo-google"></ion-icon>&nbsp;Google</button>
-		<button ion-button class="facebook" (click)="socialLogin('facebook')"><ion-icon name="logo-facebook"></ion-icon>&nbsp;Facebook</button>
-		<!-- <button ion-fab class="twitter" (click)="socialLogin('twitter')"><ion-icon name="logo-twitter"></ion-icon></button>
-		<button ion-fab class="github" (click)="socialLogin('github')"><ion-icon name="logo-github"></ion-icon></button> -->
-</div>
 </ion-content>

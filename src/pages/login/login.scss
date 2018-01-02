@@ -1,7 +1,8 @@
 page-login {
-  .socialLogin button{
+  .socialLogin {
     float: left;
-    margin: 10% 5% 0% 0%;
+    width: 100%;
+    text-align: center;
   }
   .facebook{
     background-color: #3b5998;;
@@ -14,5 +15,47 @@ page-login {
   }
   .twitter{
     background-color: #728fdb;
+  }
+  .container-logo {
+    margin-bottom: 45px !important;
+    margin-top: 35px !important;
+  }
+  .container-bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-bottom: 45px !important;
+  }
+  .item-inner{
+    border-bottom: 0px !important;
+  }
+  .list-md, .list-ios {
+    margin:0 !important; 
+  }
+  .list {
+    padding:0 !important; 
+  }
+  form {
+    .button-md, 
+    .button-ios {
+      margin: 0px !important;
+      background-color: $black;
+      padding: 26px !important;
+    }
+  }
+  .form-bottom-text label,
+  a {
+    color: $white;
+  }
+  // a[disabled], 
+  // button[disabled], 
+  // [ion-button][disabled] {
+  //   opacity: 0.8 !important;
+  // }
+  .errormsg p {
+    background-color: rgba(255,0,0,.3);
+    color: $white;
+    border: 1px solid #FF0000; 
+    padding: 5px;
   }
 }
