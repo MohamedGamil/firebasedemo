@@ -13,8 +13,11 @@
 
 <ion-header class="header-main">
   <ion-navbar >
+    <ion-title >
+    <p class="color-txt">{{userData.email}}</p>
+    </ion-title>
     <ion-buttons end>
-      <button ion-button icon-only>
+      <button ion-button icon-only class="header-btn" (click)="logout()">
         <ion-icon ios="ios-exit" md="md-exit"></ion-icon>
       </button>
     </ion-buttons>
@@ -27,7 +30,7 @@
 
   <ion-item>
     <ion-avatar item-start>
-      <img src="assets/imgs/logo.png">
+      <img src="assets/imgs/_bg.jpg">
     </ion-avatar>
     <h2>Lorem Ipsum</h2>
     <p>November 5, 1955</p>
@@ -66,7 +69,7 @@
 
   <ion-item>
     <ion-avatar item-start>
-      <img src="assets/imgs/logo.png">
+      <img src="assets/imgs/_bg.jpg">
     </ion-avatar>
     <h2>John doe</h2>
     <p>May 12, 1984</p>
@@ -105,7 +108,7 @@
 
   <ion-item>
     <ion-avatar item-start>
-      <img src="assets/imgs/logo.png">
+      <img src="assets/imgs/_bg.jpg">
     </ion-avatar>
     <h2>Dr. Lorem Ipsum</h2>
     <p>June 28, 1990</p>

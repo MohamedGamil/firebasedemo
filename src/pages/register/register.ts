@@ -19,6 +19,7 @@ declare var cordova: any;
   templateUrl: 'register.html',
 })
 
+
 export class RegisterPage {
 
   lastImage: string = null;
