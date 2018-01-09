@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 
 import { HomePage } from '../home/home';
 import { RegisterPage } from '../register/register';
-
+import { ForgetPage } from '../forget/forget';
 import { AngularFireAuth } from 'angularfire2/auth';
 import firebase from 'firebase';
 
@@ -12,12 +12,11 @@ import { LoadingProvider } from '../../providers/loading/loading';
 
 import { Facebook } from '@ionic-native/facebook'
 
-
-
 @IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
+  providers : []
 })
 export class LoginPage {
 
@@ -26,7 +25,8 @@ export class LoginPage {
 	authForm : FormGroup;
 	email: AbstractControl;
 	password: AbstractControl;
-
+  passwordtype:string='password';
+  passeye:string ='eye';
   constructor(public toastCtrl: ToastController, public fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public afAuth: AngularFireAuth,public loadingProvider: LoadingProvider,public facebook: Facebook) {
   	this.authForm = this.fb.group({
       'email' : [null, Validators.compose([Validators.required])],
@@ -51,6 +51,7 @@ export class LoginPage {
   	console.log('loginData',loginData);
   		this.afAuth.auth.signInWithEmailAndPassword(loginData.email, loginData.password)
         .then(result => {
+          console.log('result >>',result);
           this.loadingProvider.stopLoading();
           this.moveToHome(result);
         }).catch(err => {
@@ -147,8 +148,17 @@ presentAlert(err) {
 
 }
 
-facebookLogin() {
-
+managePassword() {
+  if(this.passwordtype == 'password'){
+    this.passwordtype='text';
+    this.passeye='eye-off';
+  }else{
+    this.passwordtype='password';
+    this.passeye = 'eye';
+  }
+}
+forgetpassword(){
+  this.navCtrl.setRoot(ForgetPage);
 }
 
 }
