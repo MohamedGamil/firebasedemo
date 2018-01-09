@@ -14,6 +14,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { ForgetPage } from '../pages/forget/forget';
 
 //Angular Firebase Module
 import { AngularFireModule } from 'angularfire2';
@@ -35,7 +36,8 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    ForgetPage
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    ForgetPage
   ],
   providers: [
     StatusBar,

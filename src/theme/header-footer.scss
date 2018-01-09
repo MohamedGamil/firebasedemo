@@ -12,8 +12,13 @@
     display: none;
   }
   .bar-button {
-    position: absolute;
+    // position: absolute;
     margin: 0;
+  }
+  .toolbar-ios {
+    ion-title {
+      padding: 0;
+    }
   }
 }
 .ion-page {
@@ -35,6 +40,7 @@
     max-width: 150px;
   }
 }
+
 /* Siide menu design */
 .app-root {
   ion-menu {
