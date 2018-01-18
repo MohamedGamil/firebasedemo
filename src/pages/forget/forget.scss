@@ -55,8 +55,15 @@ page-forget {
     display: inline-block;
     width: 100%;
   }
-  .form-bottom-text label,
+  .form-bottom-text label
   a {
+    color: $white;
+  }
+  .form-bottom-text h3{
+    color: $white;
+     text-transform: uppercase;
+  }
+  .form-bottom-text label {
     color: $white;
   }
   // a[disabled],

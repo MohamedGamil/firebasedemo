@@ -31,7 +31,10 @@ export class RegisterPage {
 	email: AbstractControl;
 	password: AbstractControl;
   cnfpass: AbstractControl;
-
+  passwordtype:string='password';
+  cnfpasswordtype:string='password';
+  cnfpasseye:string='eye';
+  passeye:string ='eye';
   constructor(public platform: Platform, public camera: Camera, public file: File, public filePath: FilePath, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController, public afAuth: AngularFireAuth, public fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams,public loadingProvider: LoadingProvider){
   	this.authForm = this.fb.group({
           'username' : [null, Validators.compose([Validators.required])],
@@ -162,6 +165,23 @@ private copyFileToLocalDir(namePath, currentName, newFileName) {
     return cordova.file.dataDirectory + img;
    }
   }
-
+  managePassword() {
+    if(this.passwordtype == 'password'){
+      this.passwordtype='text';
+      this.passeye='eye-off';
+    }else{
+      this.passwordtype='password';
+      this.passeye = 'eye';
+    }
+  }
+  managecnfPassword() {
+    if(this.cnfpasswordtype == 'password'){
+      this.cnfpasswordtype='text';
+      this.cnfpasseye='eye-off';
+    }else{
+      this.cnfpasswordtype='password';
+      this.cnfpasseye = 'eye';
+    }
+  }
 
 }
